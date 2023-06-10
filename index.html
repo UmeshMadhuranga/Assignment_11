@@ -17,7 +17,7 @@
 
         * {
             font-family: 'Alkatra', cursive;
-            font-family: 'Ubuntu', sans-serif;
+            /*font-family: 'Ubuntu', sans-serif;*/
         }
 
         body {
@@ -66,7 +66,7 @@
         /*--------------------------------------customer-------------------------------------------------------*/
 
         #mClass02 {
-            display: none;
+            /*display: none;*/
         }
 
         #mClass02>section>h3 {
@@ -114,7 +114,7 @@
         #mClass02>section:nth-child(2) {
             width: 65vw;
 
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 14px 28px, rgba(0, 0, 0, 0.22) 0 10px 10px;
 
             border: 2px solid #523e02;
 
@@ -293,7 +293,7 @@
                             <button type="button" id="btnCustomer" class="hButton">Customer</button>
                         </li>
                         <li class="nav-item">
-                            <button type="button" id="btnStore" class="hButton">Store</button>
+                            <button type="button" id="btnStore" class="hButton">Item</button>
                         </li>
                         <li class="nav-item">
                             <button type="button" id="btnPlaceOrder" class="hButton">Place Order</button>
@@ -309,22 +309,22 @@
 
 <main>
 
-    <section id="mClass01">
+<!--    <section id="mClass01">-->
 
-        <form>
-            <div class="mb-3">
-                <label for="userName" class="form-label">User name</label>
-                <input type="text" class="form-control" id="userName" placeholder="name">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******">
-            </div>
+<!--        <form>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="userName" class="form-label">User name</label>-->
+<!--                <input type="text" class="form-control" id="userName" placeholder="name">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="exampleInputPassword1" class="form-label">Password</label>-->
+<!--                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******">-->
+<!--            </div>-->
 
-            <button type="button" class="btn btn-primary" id="btnLogin">Login</button>
-        </form>
+<!--            <button type="button" class="btn btn-primary" id="btnLogin">Login</button>-->
+<!--        </form>-->
 
-    </section>
+<!--    </section>-->
 
     <section id="mClass02">
 
@@ -336,7 +336,7 @@
 
                 <div class="col-md-6">
                     <label for="inputCustomerId" class="form-label">Customer ID</label>
-                    <input type="text" class="form-control" id="inputCustomerId" placeholder="C001">
+                    <input type="text" class="form-control" id="inputCustomerId" placeholder="1">
                 </div>
 
                 <div class="col-md-12">
@@ -406,7 +406,7 @@
 
                 <div class="col-md-6">
                     <label for="inputItemCode" class="form-label">Item Code</label>
-                    <input type="text" class="form-control" id="inputItemCode" placeholder="I001">
+                    <input type="text" class="form-control" id="inputItemCode" placeholder="1">
                 </div>
 
                 <div class="col-md-12">
@@ -554,7 +554,7 @@
                         </div>
                     </div>
 
-                    <button type="add" class="btn btn-primary">Add to Cart</button>
+                    <button type="button" class="btn btn-primary">Add to Cart</button>
 
                 </form>
 
@@ -593,189 +593,140 @@
 <script src="assests/lib/jQuery/jquery-3.6.4.min.js"></script>
 
 <script type="module" src="../POS_System/controller/CustomerController.js"></script>
+<script type="module" src="../POS_System/controller/ItemController.js"></script>
+<script type="module" src="DB/db.js"></script>
 
 <script>
 
-    document.getElementById("btnHome").addEventListener('click', () => {
-        $('#mClass01').css("display", "unset");
-        $('#mClass02').css("display", "none");
-        $('#mClass03').css("display", "none");
-        $('#mClass04').css("display", "none");
-    })
+    // document.getElementById("btnHome").addEventListener('click', () => {
+    //     $('#mClass01').css("display", "unset");
+    //     $('#mClass02').css("display", "none");
+    //     $('#mClass03').css("display", "none");
+    //     $('#mClass04').css("display", "none");
+    // })
 
     document.getElementById("btnCustomer").addEventListener('click', () => {
-        $('#mClass01').css("display", "none");
+        // $('#mClass01').css("display", "none");
         $('#mClass02').css("display", "unset");
         $('#mClass03').css("display", "none");
         $('#mClass04').css("display", "none");
     })
 
     document.getElementById("btnStore").addEventListener('click', () => {
-        $('#mClass01').css("display", "none");
+        // $('#mClass01').css("display", "none");
         $('#mClass02').css("display", "none");
         $('#mClass03').css("display", "unset");
         $('#mClass04').css("display", "none");
     })
 
     document.getElementById("btnPlaceOrder").addEventListener('click', () => {
-        $('#mClass01').css("display", "none");
+        // $('#mClass01').css("display", "none");
         $('#mClass02').css("display", "none");
         $('#mClass03').css("display", "none");
         $('#mClass04').css("display", "unset");
     })
 
-    document.getElementById("btnLogin").addEventListener('click', () => {
-        $('#mClass01').css("display", "none");
-        $('#mClass04').css("display", "unset");
-    })
+    // document.getElementById("btnLogin").addEventListener('click', () => {
+    //     $('#mClass01').css("display", "none");
+    //     $('#mClass04').css("display", "unset");
+    // })
 
 </script>
 
 <!--    //                                      mClass02 (Customer management)-->
 
 <script>
-    const data = "POS_Customer";
-
-    function loadData() {
-        let pre_data = localStorage.getItem(data);
-        let customer_arr = JSON.parse(pre_data);
-        customer_arr.map((result, index) => {
-            var row = "<tr>" +
-                "<td>"+ result.customer_id +"</td>" +
-                "<td>"+ result.customer_name +"</td>" +
-                "<td>"+ result.customer_address +"</td>" +
-                "<td>"+ result.customer_contact +"</td>" +
-                "</tr>";
-            $('#customerTBody').append(row);
-        })
-    }
-
-    $('#btnSaveC').on('click', () => {
-
-        var customer_id = $('#inputCustomerId').val();
-        var customer_name = $('#inputCustomerName').val();
-        var customer_address = $('#inputCustomerAddress').val();
-        var customer_contact = $('#inputCustomerContact').val();
-
-        let pre_data = localStorage.getItem(data);
-
-        let customer_arr2 = [];
-
-        if (pre_data) {
-            customer_arr2 = JSON.parse(pre_data);
-        }
-
-        var obj = {
-            customer_id: customer_id,
-            customer_name: customer_name,
-            customer_address: customer_address,
-            customer_contact: customer_contact
-        }
-
-        customer_arr2.push(obj);
-        localStorage.setItem(data, JSON.stringify(customer_arr2));
-
-        $('#customerTBody tr').remove();
-        loadData();
-
-    })
-
-    $('#customerTBody tr').remove();
-    loadData();
-
-    $('#customerTBody').on('click', 'td', (event) => {
-        $('#inputCustomerId').val($(event.target).closest('tr').find('td').eq(0).text());
-        $('#inputCustomerName').val($(event.target).closest('tr').find('td').eq(1).text());
-        $('#inputCustomerAddress').val($(event.target).closest('tr').find('td').eq(2).text());
-        $('#inputCustomerContact').val($(event.target).closest('tr').find('td').eq(3).text());
-    })
-
-    $('#btnUpdateC').on('click', () => {
-        let customer_id = $('#inputCustomerId').val();
-
-        let pre_data = localStorage.getItem(data);
-        let customer_arr = JSON.parse(pre_data);
-
-        let index = customer_arr.findIndex(e => e.customer_id === customer_id);
-
-        if (index>-1) {
-            customer_arr[index].customer_name = $('#inputCustomerName').val();
-            customer_arr[index].customer_address = $('#inputCustomerAddress').val();
-            customer_arr[index].customer_contact = $('#inputCustomerContact').val();
-        } else {
-            alert("Not Found the customer..!");
-        }
-
-        localStorage.setItem(data, JSON.stringify(customer_arr));
-        $('#customerTBody tr').remove();
-        loadData();
-    })
-
-    $('#btnDeleteC').on('click', () => {
-        let customer_id = $('#inputCustomerId').val();
-
-        let pre_data = localStorage.getItem(data);
-        let customer_arr = JSON.parse(pre_data);
-
-        let index = customer_arr.findIndex(e => e.customer_id === customer_id);
-
-        customer_arr.splice(index);
-
-        localStorage.setItem(data, JSON.stringify(customer_arr));
-        $('#customerTBody tr').remove();
-        loadData();
-    })
-
-
-    // <!--    //                                           mClass03 (Item management)-->
-
-    function loadItems() {
-        let pre_data = localStorage.getItem(data);
-        let item_arr = JSON.parse(pre_data);
-        item_arr.map((result, index) => {
-            var row = "<tr>" +
-                "<td>"+ result.item_code +"</td>" +
-                "<td>"+ result.item_name +"</td>" +
-                "<td>"+ result.item_price +"</td>" +
-                "<td>"+ result.item_qty +"</td>" +
-                "</tr>";
-            $('#itemTBody').append(row);
-        })
-    }
-
-    $('#btnSaveI').on('click', () => {
-
-        var item_code = $('#item_code').val();
-        var item_name = $('#item_name').val();
-        var item_price = $('#item_price').val();
-        var item_qty = $('#item_qty').val();
-
-        let pre_data = localStorage.getItem(data);
-
-        let item_arr2 = [];
-
-        if (pre_data) {
-            item_arr2 = JSON.parse(pre_data);
-        }
-
-        var obj = {
-            item_code: item_code,
-            item_name: item_name,
-            item_price: item_price,
-            item_qty: item_qty
-        }
-
-        item_arr2.push(obj);
-        localStorage.setItem(data, JSON.stringify(item_arr2));
-
-        $('#itemTBody tr').remove();
-        loadItems();
-
-    })
-
-    $('#itemTBody tr').remove();
-    loadItems();
-
+    // const data = "POS_Customer";
+    //
+    // function loadData() {
+    //     let pre_data = localStorage.getItem(data);
+    //     let customer_arr = JSON.parse(pre_data);
+    //     customer_arr.map((result, index) => {
+    //         var row = "<tr>" +
+    //             "<td>"+ result.customer_id +"</td>" +
+    //             "<td>"+ result.customer_name +"</td>" +
+    //             "<td>"+ result.customer_address +"</td>" +
+    //             "<td>"+ result.customer_contact +"</td>" +
+    //             "</tr>";
+    //         $('#customerTBody').append(row);
+    //     })
+    // }
+    //
+    // $('#btnSaveC').on('click', () => {
+    //
+    //     var customer_id = $('#inputCustomerId').val();
+    //     var customer_name = $('#inputCustomerName').val();
+    //     var customer_address = $('#inputCustomerAddress').val();
+    //     var customer_contact = $('#inputCustomerContact').val();
+    //
+    //     let pre_data = localStorage.getItem(data);
+    //
+    //     let customer_arr2 = [];
+    //
+    //     if (pre_data) {
+    //         customer_arr2 = JSON.parse(pre_data);
+    //     }
+    //
+    //     var obj = {
+    //         customer_id: customer_id,
+    //         customer_name: customer_name,
+    //         customer_address: customer_address,
+    //         customer_contact: customer_contact
+    //     }
+    //
+    //     customer_arr2.push(obj);
+    //     localStorage.setItem(data, JSON.stringify(customer_arr2));
+    //
+    //     $('#customerTBody tr').remove();
+    //     loadData();
+    //
+    // })
+    //
+    // $('#customerTBody tr').remove();
+    // loadData();
+    //
+    // $('#customerTBody').on('click', 'td', (event) => {
+    //     $('#inputCustomerId').val($(event.target).closest('tr').find('td').eq(0).text());
+    //     $('#inputCustomerName').val($(event.target).closest('tr').find('td').eq(1).text());
+    //     $('#inputCustomerAddress').val($(event.target).closest('tr').find('td').eq(2).text());
+    //     $('#inputCustomerContact').val($(event.target).closest('tr').find('td').eq(3).text());
+    // })
+    //
+    // $('#btnUpdateC').on('click', () => {
+    //     let customer_id = $('#inputCustomerId').val();
+    //
+    //     let pre_data = localStorage.getItem(data);
+    //     let customer_arr = JSON.parse(pre_data);
+    //
+    //     let index = customer_arr.findIndex(e => e.customer_id === customer_id);
+    //
+    //     if (index>-1) {
+    //         customer_arr[index].customer_name = $('#inputCustomerName').val();
+    //         customer_arr[index].customer_address = $('#inputCustomerAddress').val();
+    //         customer_arr[index].customer_contact = $('#inputCustomerContact').val();
+    //     } else {
+    //         alert("Not Found the customer..!");
+    //     }
+    //
+    //     localStorage.setItem(data, JSON.stringify(customer_arr));
+    //     $('#customerTBody tr').remove();
+    //     loadData();
+    // })
+    //
+    // $('#btnDeleteC').on('click', () => {
+    //     let customer_id = $('#inputCustomerId').val();
+    //
+    //     let pre_data = localStorage.getItem(data);
+    //     let customer_arr = JSON.parse(pre_data);
+    //
+    //     let index = customer_arr.findIndex(e => e.customer_id === customer_id);
+    //
+    //     customer_arr.splice(index);
+    //
+    //     localStorage.setItem(data, JSON.stringify(customer_arr));
+    //     $('#customerTBody tr').remove();
+    //     loadData();
+    // })
 
 </script>
 
@@ -783,7 +734,97 @@
 
 <script>
 
-
+    // const data2 = "POS_Item";
+    //
+    // function loadItems() {
+    //     let pre_data = localStorage.getItem(data2);
+    //     let item_arr = JSON.parse(pre_data);
+    //     item_arr.map((result, index) => {
+    //         var row = "<tr>" +
+    //             "<td>"+ result.item_code +"</td>" +
+    //             "<td>"+ result.item_name +"</td>" +
+    //             "<td>"+ result.item_price +"</td>" +
+    //             "<td>"+ result.item_qty +"</td>" +
+    //             "</tr>";
+    //         $('#itemTBody').append(row);
+    //     })
+    // }
+    //
+    // $('#btnSaveI').on('click', () => {
+    //
+    //     var item_code = $('#inputItemCode').val();
+    //     var item_name = $('#inputItemName').val();
+    //     var item_price = $('#inputItemPrice').val();
+    //     var item_qty = $('#inputItemQty').val();
+    //
+    //     let pre_data = localStorage.getItem(data2);
+    //
+    //     let item_arr2 = [];
+    //
+    //     if (pre_data) {
+    //         item_arr2 = JSON.parse(pre_data);
+    //     }
+    //
+    //     var obj = {
+    //         item_code: item_code,
+    //         item_name: item_name,
+    //         item_price: item_price,
+    //         item_qty: item_qty
+    //     }
+    //
+    //     item_arr2.push(obj);
+    //     localStorage.setItem(data2, JSON.stringify(item_arr2));
+    //
+    //     $('#itemTBody tr').remove();
+    //     loadItems();
+    //
+    // })
+    //
+    // $('#itemTBody tr').remove();
+    // loadItems();
+    //
+    // $('#itemTBody').on('click', "tr", (event) => {
+    //     $('#inputItemCode').val($(event.target).closest('tr').find('td').eq(0).text());
+    //     $('#inputItemName').val($(event.target).closest('tr').find('td').eq(1).text());
+    //     $('#inputItemPrice').val($(event.target).closest('tr').find('td').eq(2).text());
+    //     $('#inputItemQty').val($(event.target).closest('tr').find('td').eq(3).text());
+    // })
+    //
+    // $('#btnUpdateI').on('click', () => {
+    //     let item_code = $('#inputItemCode').val();
+    //
+    //     let pre_data = localStorage.getItem(data2);
+    //     let item_arr = JSON.parse(pre_data);
+    //
+    //     let index = item_arr.findIndex(e => e.item_code === item_code);
+    //
+    //     if (index > -1) {
+    //         item_arr[index].item_name = $('#inputItemName').val();
+    //         item_arr[index].item_price = $('#inputItemPrice').val();
+    //         item_arr[index].item_qty = $('#inputItemQty').val();
+    //     } else {
+    //         alert("Not found the item..!");
+    //     }
+    //
+    //     localStorage.setItem(data2, JSON.stringify(item_arr));
+    //     $('#itemTBody tr').remove();
+    //     loadItems();
+    // })
+    //
+    // $('#btnDeleteI').on('click', () => {
+    //     let item_code = $('#inputItemCode').val();
+    //
+    //     let pre_data = localStorage.getItem(data2);
+    //     let item_arr = JSON.parse(pre_data);
+    //
+    //     let index = item_arr.findIndex(e => e.item_code === item_code);
+    //
+    //     item_arr.splice(index);
+    //
+    //     localStorage.setItem(data2, JSON.stringify(item_arr));
+    //     $('#itemTBody tr').remove();
+    //     loadItems();
+    // })
 
 </script>
 
