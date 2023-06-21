@@ -111,3 +111,28 @@ export function deleteItemDB(item_code) {
 
     localStorage.setItem(data2, JSON.stringify(item_arr));
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function loadCustomerDetails(customer_id) {
+    let pre_data = localStorage.getItem(data);
+    let customer_arr = JSON.parse(pre_data);
+
+    let findIndex = customer_arr.findIndex(e => e._customer_id === customer_id);
+
+    if (findIndex>-1) {
+        $('#inputCustomerName2').val(customer_arr[findIndex]._customer_name);
+        $('#inputCustomerAddress2').val(customer_arr[findIndex]._customer_address);
+        $('#inputCustomerContact2').val(customer_arr[findIndex]._customer_contactNumber);
+    } else {
+        alert("Customer not found..!");
+    }
+}
+
+
+
+
+
+
+
+// localStorage.setItem(data, JSON.stringify(customer_arr));

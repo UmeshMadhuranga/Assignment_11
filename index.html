@@ -400,7 +400,7 @@
 
         <section>
 
-            <h3><i class="fa-solid fa-store"></i> Manage Store</h3>
+            <h3><i class="fa-solid fa-store"></i> Manage Store </h3>
 
             <form class="row g-3">
 
@@ -479,34 +479,34 @@
                     <br>
 
                     <div class="row mb-3">
-                        <label for="customerID" class="col-sm-2 col-form-label">ID</label>
+                        <label for="selectCustomerID" class="col-sm-2 col-form-label">ID</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="customerID">
-                                <option value="1">C001</option>
-                                <option value="2">C002</option>
-                                <option value="3">C003</option>
+                            <select class="form-control" id="selectCustomerID">
+<!--                                <option value="1">C001</option>-->
+<!--                                <option value="2">C002</option>-->
+<!--                                <option value="3">C003</option>-->
                             </select>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputName1" class="col-sm-2 col-form-label">Name</label>
+                        <label for="inputCustomerName2" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName1">
+                            <input type="text" class="form-control" id="inputCustomerName2">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputAddress1" class="col-sm-2 col-form-label">Address</label>
+                        <label for="inputCustomerAddress2" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAddress1">
+                            <input type="text" class="form-control" id="inputCustomerAddress2">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="contact" class="col-sm-2 col-form-label">Contact</label>
+                        <label for="inputCustomerContact2" class="col-sm-2 col-form-label">Contact</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="contact">
+                            <input type="number" class="form-control" id="inputCustomerContact2">
                         </div>
                     </div>
 
@@ -523,12 +523,12 @@
                     <br>
 
                     <div class="row mb-3">
-                        <label for="ItemCode" class="col-sm-2 col-form-label">Code</label>
+                        <label for="selectItemCode" class="col-sm-2 col-form-label">Code</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="ItemCode">
-                                <option value="1">I001</option>
-                                <option value="2">I002</option>
-                                <option value="3">I003</option>
+                            <select class="form-control" id="selectItemCode">
+<!--                                <option value="1">I001</option>-->
+<!--                                <option value="2">I002</option>-->
+<!--                                <option value="3">I003</option>-->
                             </select>
                         </div>
                     </div>
@@ -595,6 +595,7 @@
 <script type="module" src="../POS_System/controller/CustomerController.js"></script>
 <script type="module" src="../POS_System/controller/ItemController.js"></script>
 <script type="module" src="DB/db.js"></script>
+<script type="module" src="controller/OrderDetailsController.js"></script>
 
 <script>
 
