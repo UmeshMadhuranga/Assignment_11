@@ -129,6 +129,21 @@ export function loadCustomerDetails(customer_id) {
     }
 }
 
+export function loadItemCodeDetails(item_code) {
+    let pre_data = localStorage.getItem(data2);
+    let item_arr = JSON.parse(pre_data);
+
+    let findIndex = item_arr.findIndex(e => e._item_code === item_code);
+
+    if (findIndex>-1) {
+        $('#inputItemName2').val(item_arr[findIndex]._item_name);
+        $('#inputItemPrice2').val(item_arr[findIndex]._item_price);
+        // $('#inputItemQty2').val(item_arr[findIndex]._item_qty);
+    } else {
+        alert("Item not Found");
+    }
+}
+
 
 
 

@@ -534,27 +534,27 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="itemName" class="col-sm-2 col-form-label">Name</label>
+                        <label for="inputItemName2" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="itemName">
+                            <input type="text" class="form-control" id="inputItemName2">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="itemPrice" class="col-sm-2 col-form-label">Price</label>
+                        <label for="inputItemPrice2" class="col-sm-2 col-form-label">Price</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="itemPrice">
+                            <input type="number" class="form-control" id="inputItemPrice2">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="QTY" class="col-sm-2 col-form-label">QTY</label>
+                        <label for="inputItemQty2" class="col-sm-2 col-form-label">QTY</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="QTY">
+                            <input type="number" class="form-control" id="inputItemQty2">
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                    <button type="button" class="btn btn-primary" id="btnAddToCart">Add to Cart</button>
 
                 </form>
 
@@ -568,8 +568,8 @@
 
                 <thead>
                 <tr>
-                    <th scope="col">Item Code</th>
                     <th scope="col">Customer ID</th>
+                    <th scope="col">Item Code</th>
                     <th scope="col">Item name</th>
                     <th scope="col">Price</th>
                     <th scope="col">QTY</th>
@@ -577,12 +577,12 @@
                 </tr>
                 </thead>
 
-                <tbody></tbody>
+                <tbody id="placeOrderTBody"></tbody>
             </table>
 
             <label for="total">Total : </label>
             <label id="total">00.00</label>
-            <button type="purchase">Purchase</button>
+            <button type="button">Purchase</button>
 
         </section>
 
