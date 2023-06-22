@@ -1,14 +1,23 @@
 import OrderDetails from "../model/OrderDetails.js";
-import {getCustomerDB, getItemDB, loadCustomerDetails, loadItemCodeDetails} from "../DB/db.js";
+import {
+    getCustomerDB,
+    getItemDB,
+    getOrderDetailsDB,
+    loadCustomerDetails,
+    loadItemCodeDetails,
+    saveOrderDetailsDB
+} from "../DB/db.js";
 
 
 export class OrderDetailsController {
     constructor() {
-        $('#btnAddToCart').click(this.handleSaveToCart.bind(this));
+        $('#btnPurchase').click(this.handleSaveOrderDetails.bind(this));
+        // $('#btnAddToCart').click(this.handleSaveToCart.bind(this));
         $('#selectItemCode').change(this.handleLoadItemDetails.bind(this));
         $('#selectCustomerID').change(this.handleLoadCustomerDetails.bind(this));
         this.handleLoadCustomerID();
         this.handleLoadItemCode();
+        this.handleLoadOrderDetails();
     }
 
     handleLoadCustomerID() {
@@ -47,26 +56,41 @@ export class OrderDetailsController {
         loadItemCodeDetails(item_code);
     }
 
-    handleSaveToCart() {
-        const customer = $('#selectCustomerID');
-        const item = $('#selectItemCode');
+    handleLoadOrderDetails() {
+        let orderDetails_arr = getOrderDetailsDB();
 
-        var customer_id = customer.options[customer.selectedIndex].text;
-        var item_code = item.options[item.selectedIndex].text;
+        orderDetails_arr.map((result, index) => {
+            var row = "<tr>" +
+                "<td>"+ result._customer_id +"</td>" +
+                "<td>"+ result._item_code +"</td>" +
+                "<td>"+ result._item_name +"</td>" +
+                "<td>"+ result._item_price +"</td>" +
+                "<td>"+ result._item_qty +"</td>" +
+                "<td>"+ result._total +"</td>" +
+                "</tr>";
+
+            $('#placeOrderTBody').append(row);
+        })
+    }
+
+    handleSaveOrderDetails() {
+        const selectElement1 = document.getElementById('selectCustomerID');
+        const customer_id = selectElement1.options[selectElement1.selectedIndex].text;
+
+        const selectElement2 = document.getElementById('selectItemCode');
+        const item_code = selectElement2.options[selectElement2.selectedIndex].text;
+
         var item_name = $('#inputItemName2').val();
         var item_price = $('#inputItemPrice2').val();
         var item_qty = $('#inputItemQty2').val();
+        var total = item_price * item_qty;
 
-        var row = "<tr>" +
-            "<td>"+ customer_id +"</td>" +
-            "<td>"+ item_code +"</td>" +
-            "<td>"+ item_name +"</td>" +
-            "<td>"+ item_price +"</td>" +
-            "<td>"+ item_qty +"</td>" +
-            "<td>"+ item_qty +"</td>" +
-            "</tr>";
+        let orderDetails = new OrderDetails(customer_id, item_code, item_name, item_price, item_qty, total);
 
-        $('#placeOrderTBody').append(row);
+        saveOrderDetailsDB(orderDetails);
+
+        $('#placeOrderTBody tr').remove();
+        this.handleLoadOrderDetails();
     }
 }
 

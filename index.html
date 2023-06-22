@@ -261,7 +261,7 @@
             font-size: 2vw;
         }
 
-        #mClass04Sub02>button {
+        #btnPurchase {
             background-color: #20c997;
             border-radius: 10px;
             border: 2px solid #5c636a;
@@ -481,11 +481,7 @@
                     <div class="row mb-3">
                         <label for="selectCustomerID" class="col-sm-2 col-form-label">ID</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="selectCustomerID">
-<!--                                <option value="1">C001</option>-->
-<!--                                <option value="2">C002</option>-->
-<!--                                <option value="3">C003</option>-->
-                            </select>
+                            <select class="form-control" id="selectCustomerID"></select>
                         </div>
                     </div>
 
@@ -554,7 +550,8 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary" id="btnAddToCart">Add to Cart</button>
+                    <!--                    <button type="button" class="btn btn-primary" id="btnAddToCart">Add to Cart</button>-->
+                    <button type="button" id="btnPurchase">Purchase</button>
 
                 </form>
 
@@ -580,9 +577,9 @@
                 <tbody id="placeOrderTBody"></tbody>
             </table>
 
-            <label for="total">Total : </label>
-            <label id="total">00.00</label>
-            <button type="button">Purchase</button>
+<!--            <label for="total">Total : </label>-->
+<!--            <label id="total">00.00</label>-->
+<!--            <button type="button" id="btnPurchase">Purchase</button>-->
 
         </section>
 

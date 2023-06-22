@@ -1,5 +1,6 @@
 const data = "POS_Customer";
 const data2 = "POS_Item";
+const data3 = "POS_OrderDetails";
 
 export function saveCustomerDB(new_customer) {
     let pre_data = localStorage.getItem(data);
@@ -144,10 +145,27 @@ export function loadItemCodeDetails(item_code) {
     }
 }
 
+export function saveOrderDetailsDB(orderDetails) {
+    let pre_data = localStorage.getItem(data3);
 
+    let orderDetails_arr = [];
 
+    if (pre_data) {
+        orderDetails_arr = JSON.parse(pre_data);
+    }
 
+    orderDetails_arr.push(orderDetails);
+    localStorage.setItem(data3, JSON.stringify(orderDetails_arr));
+}
 
+export function getOrderDetailsDB() {
+    let pre_data = localStorage.getItem(data3);
 
+    let orderDetails_arr = [];
 
-// localStorage.setItem(data, JSON.stringify(customer_arr));
+    if (pre_data) {
+        orderDetails_arr = JSON.parse(pre_data);
+    }
+
+    return orderDetails_arr;
+}
