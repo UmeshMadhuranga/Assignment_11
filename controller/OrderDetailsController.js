@@ -93,6 +93,20 @@ export class OrderDetailsController {
 
         $('#placeOrderTBody tr').remove();
         this.handleLoadOrderDetails();
+
+        this.clearAll();
+    }
+
+    clearAll() {
+        $('#selectCustomerID').val('');
+        $('#inputCustomerName2').val('');
+        $('#inputCustomerAddress2').val('');
+        $('#inputCustomerContact2').val('');
+
+        $('#selectItemCode').val('');
+        $('#inputItemName2').val('');
+        $('#inputItemPrice2').val('');
+        $('#inputItemQty2').val('');
     }
 }
 
