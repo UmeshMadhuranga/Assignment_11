@@ -17,7 +17,6 @@
 
         * {
             font-family: 'Alkatra', cursive;
-            /*font-family: 'Ubuntu', sans-serif;*/
         }
 
         body {
@@ -48,11 +47,8 @@
         }
 
         #mClass01 {
-            width: 30vw;
-
-            border: 2px solid #0d6efd;
-            padding: 15px;
-            border-radius: 20px;
+            width: 100%;
+            height: fit-content;
 
             position: absolute;
             left: 0;
@@ -60,13 +56,27 @@
             top: 100px;
             margin: auto;
 
-            /*display: none;*/
+            display: none;
+        }
+
+        #mClass01 section table {
+            width: 70%;
+            border: 2px solid;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        #mClass01 section table>thead>tr>th {
+            background-color: #8BD8A1;
         }
 
         /*--------------------------------------customer-------------------------------------------------------*/
 
         #mClass02 {
-            /*display: none;*/
+            display: none;
         }
 
         #mClass02>section>h3 {
@@ -202,7 +212,7 @@
         /*------------------------------------place order-----------------------------------------------------*/
 
         #mClass04 {
-            display: none;
+            /*display: none;*/
         }
 
         #mClass04Sub01 {
@@ -296,7 +306,7 @@
                             <button type="button" id="btnStore" class="hButton">Item</button>
                         </li>
                         <li class="nav-item">
-                            <button type="button" id="btnPlaceOrder" class="hButton">Place Order</button>
+                            <button type="button" id="btnPlaceOrder" class="hButton">Orders</button>
                         </li>
                     </ul>
                 </div>
@@ -309,22 +319,29 @@
 
 <main>
 
-<!--    <section id="mClass01">-->
+    <section id="mClass01">
 
-<!--        <form>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="userName" class="form-label">User name</label>-->
-<!--                <input type="text" class="form-control" id="userName" placeholder="name">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="exampleInputPassword1" class="form-label">Password</label>-->
-<!--                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******">-->
-<!--            </div>-->
+        <section>
 
-<!--            <button type="button" class="btn btn-primary" id="btnLogin">Login</button>-->
-<!--        </form>-->
+            <table class="table">
 
-<!--    </section>-->
+                <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Item name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">QTY</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+
+                <tbody id="ordersTBody"></tbody>
+            </table>
+
+        </section>
+
+    </section>
 
     <section id="mClass02">
 
@@ -589,41 +606,37 @@
 <script type="module" src="../POS_System/controller/ItemController.js"></script>
 <script type="module" src="DB/db.js"></script>
 <script type="module" src="controller/OrderDetailsController.js"></script>
+<script type="module" src="controller/OrdersController.js"></script>
 
 <script>
 
-    // document.getElementById("btnHome").addEventListener('click', () => {
-    //     $('#mClass01').css("display", "unset");
-    //     $('#mClass02').css("display", "none");
-    //     $('#mClass03').css("display", "none");
-    //     $('#mClass04').css("display", "none");
-    // })
+    document.getElementById("btnHome").addEventListener('click', () => {
+        $('#mClass01').css("display", "none");
+        $('#mClass02').css("display", "none");
+        $('#mClass03').css("display", "none");
+        $('#mClass04').css("display", "unset");
+    })
 
     document.getElementById("btnCustomer").addEventListener('click', () => {
-        // $('#mClass01').css("display", "none");
+        $('#mClass01').css("display", "none");
         $('#mClass02').css("display", "unset");
         $('#mClass03').css("display", "none");
         $('#mClass04').css("display", "none");
     })
 
     document.getElementById("btnStore").addEventListener('click', () => {
-        // $('#mClass01').css("display", "none");
+        $('#mClass01').css("display", "none");
         $('#mClass02').css("display", "none");
         $('#mClass03').css("display", "unset");
         $('#mClass04').css("display", "none");
     })
 
     document.getElementById("btnPlaceOrder").addEventListener('click', () => {
-        // $('#mClass01').css("display", "none");
+        $('#mClass01').css("display", "unset");
         $('#mClass02').css("display", "none");
         $('#mClass03').css("display", "none");
-        $('#mClass04').css("display", "unset");
+        $('#mClass04').css("display", "none");
     })
-
-    // document.getElementById("btnLogin").addEventListener('click', () => {
-    //     $('#mClass01').css("display", "none");
-    //     $('#mClass04').css("display", "unset");
-    // })
 
 </script>
 
