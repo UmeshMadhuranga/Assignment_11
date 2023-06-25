@@ -169,3 +169,20 @@ export function getOrderDetailsDB() {
 
     return orderDetails_arr;
 }
+
+export function changeItemQty(item_code ,item_qty) {
+    let pre_data = localStorage.getItem(data2);
+    let item_arr = JSON.parse(pre_data);
+
+    let index = item_arr.findIndex(e => e._item_code === item_code);
+
+    if (index > -1) {
+        let oldQty = item_arr[index]._item_qty;
+        item_arr[index]._item_qty = oldQty - item_qty;
+
+    } else {
+        alert("Not found the item..!");
+    }
+
+    localStorage.setItem(data2, JSON.stringify(item_arr));
+}

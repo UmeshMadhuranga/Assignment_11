@@ -1,5 +1,6 @@
 import OrderDetails from "../model/OrderDetails.js";
 import {
+    changeItemQty,
     getCustomerDB,
     getItemDB,
     getOrderDetailsDB,
@@ -65,7 +66,7 @@ export class OrderDetailsController {
                 "<td>"+ result._item_code +"</td>" +
                 "<td>"+ result._item_name +"</td>" +
                 "<td>"+ result._item_price +"</td>" +
-                "<td>"+ result._item_qty +"</td>" +
+                "<td>"+ result._qty +"</td>" +
                 "<td>"+ result._total +"</td>" +
                 "</tr>";
 
@@ -88,6 +89,7 @@ export class OrderDetailsController {
         let orderDetails = new OrderDetails(customer_id, item_code, item_name, item_price, item_qty, total);
 
         saveOrderDetailsDB(orderDetails);
+        changeItemQty(item_code, item_qty);
 
         $('#placeOrderTBody tr').remove();
         this.handleLoadOrderDetails();
