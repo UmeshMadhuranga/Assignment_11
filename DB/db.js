@@ -139,7 +139,7 @@ export function loadItemCodeDetails(item_code) {
     if (findIndex>-1) {
         $('#inputItemName2').val(item_arr[findIndex]._item_name);
         $('#inputItemPrice2').val(item_arr[findIndex]._item_price);
-        // $('#inputItemQty2').val(item_arr[findIndex]._item_qty);
+        $('#inputItemQty3').val(item_arr[findIndex]._item_qty);
     } else {
         alert("Item not Found");
     }

@@ -121,6 +121,7 @@ export class OrderDetailsController {
         $('#inputItemName2').val('');
         $('#inputItemPrice2').val('');
         $('#inputItemQty2').val('');
+        $('#inputItemQty3').val('');
     }
 }
 
