@@ -186,3 +186,14 @@ export function changeItemQty(item_code ,item_qty) {
 
     localStorage.setItem(data2, JSON.stringify(item_arr));
 }
+
+export function deleteOrderDB(customer_id) {
+    let pre_data = localStorage.getItem(data3);
+    let orders_arr = JSON.parse(pre_data);
+
+    let index = orders_arr.findIndex(e => e._customer_id === customer_id);
+
+    orders_arr.splice(index);
+
+    localStorage.setItem(data3, JSON.stringify(orders_arr));
+}

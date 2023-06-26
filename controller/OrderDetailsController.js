@@ -1,6 +1,7 @@
 import OrderDetails from "../model/OrderDetails.js";
 import {
     changeItemQty,
+    deleteOrderDB,
     getCustomerDB,
     getItemDB,
     getOrderDetailsDB,
@@ -12,6 +13,7 @@ import {
 
 export class OrderDetailsController {
     constructor() {
+        $('#btnDeleteOrder').click(this.handleDeleteOrder.bind(this));
         $('#btnPurchase').click(this.handleSaveOrderDetails.bind(this));
         // $('#btnAddToCart').click(this.handleSaveToCart.bind(this));
         $('#selectItemCode').change(this.handleLoadItemDetails.bind(this));
@@ -97,6 +99,18 @@ export class OrderDetailsController {
         this.clearAll();
     }
 
+    handleDeleteOrder() {
+        const selectElement1 = document.getElementById('selectCustomerID');
+        const customer_id = selectElement1.options[selectElement1.selectedIndex].text;
+
+        deleteOrderDB(customer_id);
+
+        $('#placeOrderTBody tr').remove();
+        this.handleLoadOrderDetails();
+
+        this.clearAll();
+    }
+
     clearAll() {
         $('#selectCustomerID').val('');
         $('#inputCustomerName2').val('');
@@ -111,3 +125,11 @@ export class OrderDetailsController {
 }
 
 new OrderDetailsController();
+
+$('#placeOrderTBody').on('click', 'td', (event) => {
+    $('#selectCustomerID').val($(event.target).closest('tr').find('td').eq(0).text());
+    $('#selectItemCode').val($(event.target).closest('tr').find('td').eq(1).text());
+    $('#inputItemName2').val($(event.target).closest('tr').find('td').eq(2).text());
+    $('#inputItemPrice2').val($(event.target).closest('tr').find('td').eq(3).text());
+    $('#inputItemQty2').val($(event.target).closest('tr').find('td').eq(4).text());
+})
